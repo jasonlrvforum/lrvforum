@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forums - LRV Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forum-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>LRV Forum</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Marketplace</a>
+                <a href="forum.html" class="active">Forums</a>
+                <a href="#">Resorts</a>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Login</a>
+                    <a href="#" class="btn btn-signup">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="forum-main">
+        <div class="forum-container">
+            <div class="forum-header">
+                <h1>Forums</h1>
+                <div class="forum-actions">
+                    <button class="btn btn-primary new-topic-btn">
+                        <i class="fas fa-plus"></i> New Topic
+                    </button>
+                    <div class="forum-search">
+                        <input type="text" placeholder="Search forums...">
+                        <button class="btn btn-search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="forum-breadcrumb">
+                <a href="forum.html">Forums</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>All Categories</span>
+            </nav>
+
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="category-content">
+                        <h2>Resort Reviews</h2>
+                        <p>Share your experiences and read reviews from other owners</p>
+                        <div class="category-stats">
+                            <span><i class="fas fa-comments"></i> 245 topics</span>
+                            <span><i class="fas fa-users"></i> 1.2k members</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="category-content">
+                        <h2>General Discussion</h2>
+                        <p>Chat about timeshare ownership, experiences, and tips</p>
+                        <div class="category-stats">
+                            <span><i class="fas fa-comments"></i> 189 topics</span>
+                            <span><i class="fas fa-users"></i> 956 members</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="category-content">
+                        <h2>Buying/Selling Tips</h2>
+                        <p>Expert advice on timeshare transactions and negotiations</p>
+                        <div class="category-stats">
+                            <span><i class="fas fa-comments"></i> 167 topics</span>
+                            <span><i class="fas fa-users"></i> 823 members</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="category-content">
+                        <h2>Market Updates</h2>
+                        <p>Stay informed about timeshare market trends and news</p>
+                        <div class="category-stats">
+                            <span><i class="fas fa-comments"></i> 134 topics</span>
+                            <span><i class="fas fa-users"></i> 745 members</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <div class="category-content">
+                        <h2>Owner Support</h2>
+                        <p>Get help with ownership questions and issues</p>
+                        <div class="category-stats">
+                            <span><i class="fas fa-comments"></i> 198 topics</span>
+                            <span><i class="fas fa-users"></i> 934 members</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trending-topics">
+                <h2>Trending Topics</h2>
+                <div class="topics-list">
+                    <div class="topic-item">
+                        <div class="topic-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3><a href="#">Best Time to Buy: Market Analysis 2025</a></h3>
+                            <div class="topic-meta">
+                                <span><i class="fas fa-user"></i> JohnDoe</span>
+                                <span><i class="fas fa-comments"></i> 45 replies</span>
+                                <span><i class="fas fa-eye"></i> 1.2k views</span>
+                                <span><i class="fas fa-clock"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="topic-status">
+                            <span class="status-badge hot">Hot</span>
+                        </div>
+                    </div>
+
+                    <div class="topic-item">
+                        <div class="topic-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="topic-content">
+                            <h3><a href="#">Maui Resort Review: Post-Recovery Update</a></h3>
+                            <div class="topic-meta">
+                                <span><i class="fas fa-user"></i> TravelPro</span>
+                                <span><i class="fas fa-comments"></i> 32 replies</span>
+                                <span><i class="fas fa-eye"></i> 890 views</span>
+                                <span><i class="fas fa-clock"></i> 5 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="topic-status">
+                            <span class="status-badge featured">Featured</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About LRV Forum</h3>
+                <p>Your trusted platform for timeshare owners to connect, buy, sell, and rent.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="best-practices.html">Best Practices</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LRV Forum. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="forum-data.js"></script>
+    <script src="forum.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic - LRV Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forum-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>LRV Forum</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Marketplace</a>
+                <a href="forum.html" class="active">Forums</a>
+                <a href="#">Resorts</a>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Login</a>
+                    <a href="#" class="btn btn-signup">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="forum-main">
+        <div class="forum-container">
+            <nav class="forum-breadcrumb">
+                <a href="forum.html">Forums</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="category.html">Resort Reviews</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Maui Resort Review: Post-Recovery Update</span>
+            </nav>
+
+            <div class="topic-header">
+                <h1>Maui Resort Review: Post-Recovery Update</h1>
+                <div class="topic-meta">
+                    <div class="topic-stats">
+                        <span><i class="fas fa-eye"></i> 890 views</span>
+                        <span><i class="fas fa-comments"></i> 32 replies</span>
+                        <span><i class="fas fa-clock"></i> Started 5 hours ago</span>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="btn btn-icon" title="Share">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Bookmark">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Report">
+                            <i class="fas fa-flag"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-content">
+                <div class="post original-post">
+                    <div class="post-sidebar">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="author-info">
+                            <h3>TravelPro</h3>
+                            <div class="author-badges">
+                                <span class="badge verified-owner">verified owner</span>
+                                <span class="badge expert">expert</span>
+                                <span class="badge moderator">moderator</span>
+                            </div>
+                            <div class="author-stats">
+                                <span><i class="fas fa-star"></i> 3,400</span>
+                                <span><i class="fas fa-comment"></i> 342</span>
+                            </div>
+                            <span class="join-date">Member since Jun 2023</span>
+                        </div>
+                    </div>
+                    <div class="post-main">
+                        <div class="post-content">
+                            <p>Detailed review of the Maui resort's recovery and current state...</p>
+                            <div class="post-attachments">
+                                <div class="attachment-preview">
+                                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" alt="Resort Image">
+                                </div>
+                            </div>
+                            <div class="post-tags">
+                                <span class="tag">resort-review</span>
+                                <span class="tag">maui</span>
+                                <span class="tag">hawaii</span>
+                            </div>
+                        </div>
+                        <div class="post-footer">
+                            <div class="post-actions">
+                                <button class="btn btn-icon" title="Like">
+                                    <i class="far fa-heart"></i>
+                                    <span>24</span>
+                                </button>
+                                <button class="btn btn-icon" title="Quote">
+                                    <i class="fas fa-quote-right"></i>
+                                </button>
+                                <button class="btn btn-icon" title="Share">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                            </div>
+                            <div class="post-meta">
+                                <span class="post-number">#1</span>
+                                <span class="post-time">5 hours ago</span>
+                                <button class="btn btn-text">Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="replies-header">
+                    <h2>Replies</h2>
+                    <div class="replies-controls">
+                        <select class="sort-replies">
+                            <option value="oldest">Oldest First</option>
+                            <option value="newest">Newest First</option>
+                            <option value="likes">Most Liked</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="replies-list">
+                    <!-- Replies will be dynamically populated -->
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-icon" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="page-numbers">
+                        <button class="btn active">1</button>
+                        <button class="btn">2</button>
+                        <button class="btn">3</button>
+                        <span>...</span>
+                        <button class="btn">7</button>
+                    </div>
+                    <button class="btn btn-icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="reply-box">
+                    <h3>Post a Reply</h3>
+                    <div class="editor-toolbar">
+                        <button class="btn btn-icon" title="Bold">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Italic">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Image">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Quote">
+                            <i class="fas fa-quote-right"></i>
+                        </button>
+                    </div>
+                    <textarea placeholder="Write your reply here..."></textarea>
+                    <div class="editor-footer">
+                        <div class="editor-tips">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Markdown formatting is supported</span>
+                        </div>
+                        <button class="btn btn-primary">Post Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About LRV Forum</h3>
+                <p>Your trusted platform for timeshare owners to connect, buy, sell, and rent.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="best-practices.html">Best Practices</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LRV Forum. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="forum-data.js"></script>
+    <script src="topic.js"></script>
+</body>
+</html>
