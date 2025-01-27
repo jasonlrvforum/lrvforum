@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LRV Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .about-content h1 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .about-content h2 {
+            color: var(--primary-blue);
+            margin: 30px 0 15px;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .about-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .about-content li {
+            margin-bottom: 8px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info {
+            background-color: var(--gray);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .bullet-list {
+            list-style-type: disc;
+            margin-left: 40px;
+        }
+
+        .numbered-list {
+            list-style-type: decimal;
+            margin-left: 40px;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .mission-box {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .mission-box h2 {
+            color: var(--white);
+            margin-top: 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .value-item {
+            background-color: var(--gray);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .value-item h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>LRV Forum</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Marketplace</a>
+                <a href="#">Forums</a>
+                <a href="#">Resorts</a>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-login">Login</a>
+                    <a href="#" class="btn btn-signup">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="about-container">
+        <div class="about-content">
+            <h1>About Us</h1>
+
+            <div class="section">
+                <h2>Welcome to LRV Forum</h2>
+                <p class="welcome-message">At LRV Forum, we are proud to be a veteran-owned platform dedicated to empowering timeshare owners, brokers, buyers, and renters. Our mission is to create a transparent, user-friendly, and trustworthy space where the timeshare community can connect, transact, and share knowledge.</p>
+            </div>
+
+            <div class="section">
+                <div class="mission-box">
+                    <h2>Our Mission</h2>
+                    <p>We understand that timeshare ownership comes with unique challenges and opportunities. Our mission is to simplify the process of buying, selling, and renting timeshares by providing:</p>
+                    <ul class="bullet-list">
+                        <li>A Trusted Platform: With features like optional listing verification, we aim to enhance confidence for both buyers and sellers.</li>
+                        <li>Community Engagement: Through forums and resources, we foster a collaborative environment where users can exchange ideas, ask questions, and find support.</li>
+                        <li>Transparent Practices: We prioritize clarity, ensuring users understand their options without high-pressure tactics or hidden fees.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Why Choose LRV Forum?</h2>
+                <ol class="numbered-list">
+                    <li>Veteran-Owned and Operated: Integrity, discipline, and a commitment to service are at the heart of everything we do.</li>
+                    <li>Tailored for the Timeshare Community: We specialize in timeshare listings, offering tools and resources designed for this unique market.</li>
+                    <li>Optional Premium Services: From featured listings to verification services, we provide options to boost visibility and build trust without requiring unnecessary commitments.</li>
+                    <li>Broad Reach: Our platform is designed to connect individual owners, brokers, and prospective buyers across the nation, increasing opportunities for everyone.</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h3>Integrity</h3>
+                        <p>We operate with honesty and transparency in all interactions.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>Community</h3>
+                        <p>We believe in building a supportive and inclusive space for users of all backgrounds.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>Empowerment</h3>
+                        <p>By providing educational resources and tools, we empower our users to make informed decisions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>How We Started</h2>
+                <p>LRV Forum was founded with the goal of addressing the challenges faced by timeshare owners and buyers in an evolving market. Our veteran-owned ethos reflects a commitment to excellence, problem-solving, and service, which guides every aspect of our operations.</p>
+            </div>
+
+            <div class="section">
+                <h2>Join the LRV Forum Community</h2>
+                <p>Whether you're a timeshare owner looking to sell or rent, a buyer searching for the perfect vacation opportunity, or a broker seeking a reliable platform, LRV Forum is here to support you.</p>
+                <p>Explore our listings, engage with our community, and take the next step in your timeshare journey.</p>
+            </div>
+
+            <div class="section">
+                <h2>Questions or Feedback?</h2>
+                <div class="contact-info">
+                    <p>We'd love to hear from you!</p>
+                    <p>Email: support@lrvforum.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About LRV Forum</h3>
+                <p>Your trusted platform for timeshare owners to connect, buy, sell, and rent.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="best-practices.html">Best Practices</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LRV Forum. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
