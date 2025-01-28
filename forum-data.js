@@ -64,6 +64,23 @@ var topics = [
     {
         id: 2,
         categoryId: 1,
+        title: "Luxury Beach Resort Review",
+        author: {
+            id: 2,
+            username: "TravelPro",
+            reputation: 3400
+        },
+        createdAt: new Date("2025-01-27T11:00:00"),
+        lastReplyAt: new Date("2025-01-27T14:00:00"),
+        viewCount: 890,
+        replyCount: 32,
+        status: "featured",
+        content: "Experience pure luxury at this stunning beachfront resort. The property features pristine white sand beaches, crystal clear waters, and world-class amenities...",
+        tags: ["resort-review", "luxury", "beach"]
+    },
+    {
+        id: 3,
+        categoryId: 1,
         title: "Maui Resort Review: Post-Recovery Update",
         author: {
             id: 2,

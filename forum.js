@@ -121,9 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            topicItem.querySelector('a').addEventListener('click', (e) => {
+            const topicLink = topicItem.querySelector('a');
+            topicLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                navigateToTopic(topic.id);
+                console.log('Navigating to topic:', topic.id);
+                window.location.href = `topic.html?id=${topic.id}`;
             });
 
             topicsList.appendChild(topicItem);
