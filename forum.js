@@ -1,17 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if forum data is loaded
+    if (!window.forumData) {
+        console.error('Forum data not loaded. Make sure forum-data.js is included before forum.js');
+        return;
+    }
+
     // Initialize forum data
     const { categories, topics, posts, users, utils } = window.forumData;
     const { formatTimeAgo, formatNumber } = utils;
 
     // DOM Elements
     const categoriesGrid = document.querySelector('.categories-grid');
+    if (!categoriesGrid) {
+        console.error('Categories grid element not found');
+        return;
+    }
+
     const topicsList = document.querySelector('.topics-list');
-    const searchInput = document.querySelector('.forum-search input');
-    const searchButton = document.querySelector('.forum-search .btn-search');
+    if (!topicsList) {
+        console.error('Topics list element not found');
+        return;
+    }
+
+    const searchInput = document.querySelector('input[placeholder="Search forums..."]');
+    const searchButton = document.querySelector('.btn-search');
     const newTopicButton = document.querySelector('.new-topic-btn');
+
+    console.log('Forum data loaded:', { categories, topics, posts, users });
 
     // Update category statistics
     function updateCategoryStats() {
+        console.log('Updating categories...');
         categoriesGrid.innerHTML = '';
         categories.forEach(category => {
             const categoryCard = document.createElement('div');
@@ -40,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update trending topics
     function updateTrendingTopics() {
+        console.log('Updating trending topics...');
         topicsList.innerHTML = '';
         const trendingTopics = topics
             .sort((a, b) => b.viewCount - a.viewCount)
@@ -80,30 +100,116 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Search functionality
     function setupSearch() {
-        searchButton.addEventListener('click', performSearch);
+        console.log('Setting up search...', { searchButton, searchInput });
+        
+        if (!searchButton || !searchInput) {
+            console.error('Search elements not found');
+            return;
+        }
+
+        searchButton.addEventListener('click', () => {
+            console.log('Search button clicked');
+            performSearch();
+        });
+
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
+                console.log('Enter key pressed in search');
                 performSearch();
             }
         });
+
+        console.log('Search setup complete');
     }
 
     function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        if (!searchTerm) return;
+        if (!searchInput) {
+            console.error('Search input not found');
+            return;
+        }
 
-        const searchResults = topics.filter(topic => 
-            topic.title.toLowerCase().includes(searchTerm) ||
-            topic.content.toLowerCase().includes(searchTerm) ||
-            topic.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-        );
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        console.log('Search term:', searchTerm, 'Input element:', searchInput);
+        if (!searchTerm) {
+            console.log('Empty search term, returning');
+            return;
+        }
+
+        console.log('Available topics:', topics);
+
+        const searchResults = topics.filter(topic => {
+            const titleMatch = topic.title.toLowerCase().includes(searchTerm);
+            const contentMatch = topic.content.toLowerCase().includes(searchTerm);
+            const tagMatch = topic.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+            
+            console.log('Checking topic:', {
+                id: topic.id,
+                title: topic.title,
+                titleMatch,
+                contentMatch,
+                tagMatch
+            });
+
+            return titleMatch || contentMatch || tagMatch;
+        });
+
+        console.log('Found results:', searchResults);
+        
+        // Clear previous search results
+        console.log('Clearing previous results');
+        categoriesGrid.innerHTML = '';
+        topicsList.innerHTML = '';
 
         displaySearchResults(searchResults);
     }
 
     function displaySearchResults(results) {
-        // TODO: Implement search results display
-        console.log('Search results:', results);
+        console.log('Displaying results:', results);
+        
+        if (results.length === 0) {
+            categoriesGrid.innerHTML = '<div class="no-results">No results found</div>';
+            return;
+        }
+
+        // Show search results header
+        const header = document.createElement('div');
+        header.className = 'search-results-header';
+        header.innerHTML = '<h2>Search Results</h2>';
+        categoriesGrid.appendChild(header);
+
+        const searchResultsList = document.createElement('div');
+        searchResultsList.className = 'search-results-list';
+
+        results.forEach(topic => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            
+            resultItem.innerHTML = `
+                <div class="topic-content">
+                    <h3><a href="#" data-topic-id="${topic.id}">${topic.title}</a></h3>
+                    <div class="topic-meta">
+                        <span><i class="fas fa-user"></i> ${topic.author.username}</span>
+                        <span><i class="fas fa-comments"></i> ${topic.replyCount} replies</span>
+                        <span><i class="fas fa-eye"></i> ${formatNumber(topic.viewCount)} views</span>
+                        <span><i class="fas fa-clock"></i> ${formatTimeAgo(topic.lastReplyAt)}</span>
+                    </div>
+                    <div class="topic-preview">${topic.content.substring(0, 150)}...</div>
+                    <div class="topic-tags">
+                        ${topic.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            resultItem.querySelector('a').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateToTopic(topic.id);
+            });
+
+            searchResultsList.appendChild(resultItem);
+        });
+
+        categoriesGrid.appendChild(searchResultsList);
+        topicsList.innerHTML = ''; // Hide trending topics during search
     }
 
     // Navigation functions

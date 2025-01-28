@@ -1,5 +1,5 @@
 // Forum Categories Data
-const categories = [
+var categories = [
     {
         id: 1,
         name: "Resort Reviews",
@@ -43,7 +43,7 @@ const categories = [
 ];
 
 // Forum Topics Data
-const topics = [
+var topics = [
     {
         id: 1,
         categoryId: 4,
@@ -81,7 +81,7 @@ const topics = [
 ];
 
 // Forum Posts Data (Replies)
-const posts = [
+var posts = [
     {
         id: 1,
         topicId: 1,
@@ -111,7 +111,7 @@ const posts = [
 ];
 
 // Users Data
-const users = [
+var users = [
     {
         id: 1,
         username: "JohnDoe",
@@ -147,7 +147,7 @@ const users = [
 ];
 
 // Utility Functions
-const formatTimeAgo = (date) => {
+var formatTimeAgo = function(date) {
     const now = new Date();
     const diffInSeconds = Math.floor((now - date) / 1000);
     const diffInMinutes = Math.floor(diffInSeconds / 60);
@@ -166,7 +166,7 @@ const formatTimeAgo = (date) => {
     return 'just now';
 };
 
-const formatNumber = (num) => {
+var formatNumber = function(num) {
     if (num >= 1000) {
         return (num / 1000).toFixed(1) + 'k';
     }
