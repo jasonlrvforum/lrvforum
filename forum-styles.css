@@ -28,11 +28,23 @@
     gap: 0.5rem;
 }
 
-.forum-search input {
+.forum-search input,
+.forum-search .location-dropdown {
     padding: 0.5rem 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     min-width: 250px;
+}
+
+.forum-search .location-dropdown {
+    min-width: 200px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.forum-search .location-dropdown:focus {
+    outline: none;
+    border-color: var(--primary-blue);
 }
 
 /* Breadcrumb Navigation */

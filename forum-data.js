@@ -173,12 +173,47 @@ var formatNumber = function(num) {
     return num.toString();
 };
 
+// Timeshare Locations Data
+var locations = {
+    "United States": {
+        "Alabama": ["Gulf Shores"],
+        "Arizona": ["Phoenix", "Sedona", "Scottsdale"],
+        "California": ["Anaheim", "Lake Tahoe", "Napa Valley", "Palm Springs", "San Diego", "San Francisco"],
+        "Colorado": ["Breckenridge", "Steamboat Springs", "Vail", "Winter Park"],
+        "Florida": ["Daytona Beach", "Fort Lauderdale", "Kissimmee", "Miami", "Orlando", "Panama City Beach"],
+        "Hawaii": ["Honolulu (Oahu)", "Lahaina (Maui)", "Kailua-Kona (Big Island)", "Princeville (Kauai)"],
+        "Nevada": ["Las Vegas", "Lake Tahoe"],
+        "South Carolina": ["Hilton Head Island", "Myrtle Beach"],
+        "Tennessee": ["Gatlinburg", "Pigeon Forge"],
+        "Texas": ["Galveston"],
+        "Utah": ["Park City"],
+        "Vermont": ["Stowe"],
+        "Virginia": ["Williamsburg"],
+        "Wisconsin": ["Wisconsin Dells"]
+    },
+    "Mexico": {
+        "Baja California Sur": ["Cabo San Lucas", "San José del Cabo"],
+        "Jalisco": ["Puerto Vallarta"],
+        "Nayarit": ["Nuevo Vallarta"],
+        "Quintana Roo": ["Cancun", "Cozumel", "Playa del Carmen"]
+    },
+    "Caribbean": {
+        "Aruba": ["Palm Beach"],
+        "Bahamas": ["Nassau", "Paradise Island"],
+        "Dominican Republic": ["Punta Cana"],
+        "Jamaica": ["Montego Bay"],
+        "St. Maarten": ["Philipsburg", "Simpson Bay"],
+        "US Virgin Islands": ["St. Thomas"]
+    }
+};
+
 // Export data and utilities
 window.forumData = {
     categories,
     topics,
     posts,
     users,
+    locations,
     utils: {
         formatTimeAgo,
         formatNumber

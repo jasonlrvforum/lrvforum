@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize forum data
-    const { categories, topics, posts, users, utils } = window.forumData;
+    const { categories, topics, posts, users, locations, utils } = window.forumData;
     const { formatTimeAgo, formatNumber } = utils;
 
     // DOM Elements
@@ -14,6 +14,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!categoriesGrid) {
         console.error('Categories grid element not found');
         return;
+    }
+
+    // Initialize location dropdown
+    const locationDropdown = document.getElementById('locationDropdown');
+    if (locationDropdown) {
+        populateLocationDropdown(locationDropdown);
+    } else {
+        console.error('Location dropdown element not found');
+    }
+
+    function populateLocationDropdown(dropdown) {
+        // Add the default option
+        dropdown.innerHTML = '<option value="">Select Location</option>';
+
+        // Iterate through countries
+        for (const country in locations) {
+            const countryOptgroup = document.createElement('optgroup');
+            countryOptgroup.label = country;
+
+            // Iterate through states/regions
+            for (const state in locations[country]) {
+                // Iterate through cities
+                locations[country][state].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = `${country}|${state}|${city}`;
+                    option.textContent = `${city}, ${state}`;
+                    countryOptgroup.appendChild(option);
+                });
+            }
+
+            dropdown.appendChild(countryOptgroup);
+        }
     }
 
     const topicsList = document.querySelector('.topics-list');
@@ -129,15 +161,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const searchTerm = searchInput.value.toLowerCase().trim();
-        console.log('Search term:', searchTerm, 'Input element:', searchInput);
-        if (!searchTerm) {
-            console.log('Empty search term, returning');
+        const selectedLocation = locationDropdown ? locationDropdown.value : '';
+        
+        console.log('Search term:', searchTerm, 'Location:', selectedLocation);
+        if (!searchTerm && !selectedLocation) {
+            console.log('Empty search criteria, returning');
             return;
         }
 
         console.log('Available topics:', topics);
 
         const searchResults = topics.filter(topic => {
+            // Location filtering
+            if (selectedLocation) {
+                const [country, state, city] = selectedLocation.split('|');
+                const locationMatch = topic.tags.some(tag => 
+                    tag.toLowerCase() === city.toLowerCase() ||
+                    tag.toLowerCase() === state.toLowerCase() ||
+                    tag.toLowerCase() === country.toLowerCase()
+                );
+                if (!locationMatch) return false;
+            }
+
+            // Text search filtering (only if search term exists)
+            if (!searchTerm) return true;
             const titleMatch = topic.title.toLowerCase().includes(searchTerm);
             const contentMatch = topic.content.toLowerCase().includes(searchTerm);
             const tagMatch = topic.tags.some(tag => tag.toLowerCase().includes(searchTerm));
