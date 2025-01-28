@@ -19,33 +19,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize location dropdown
     const locationDropdown = document.getElementById('locationDropdown');
     if (locationDropdown) {
+        console.log('Found location dropdown, populating...');
         populateLocationDropdown(locationDropdown);
+        
+        // Add change event listener
+        locationDropdown.addEventListener('change', () => {
+            console.log('Location selected:', locationDropdown.value);
+            performSearch();
+        });
     } else {
         console.error('Location dropdown element not found');
     }
 
     function populateLocationDropdown(dropdown) {
+        console.log('Populating dropdown with locations:', locations);
+        
         // Add the default option
-        dropdown.innerHTML = '<option value="">Select Location</option>';
+        dropdown.innerHTML = '<option value="">Find your perfect timeshare</option>';
 
         // Iterate through countries
         for (const country in locations) {
             const countryOptgroup = document.createElement('optgroup');
             countryOptgroup.label = country;
+            console.log('Adding country:', country);
 
             // Iterate through states/regions
             for (const state in locations[country]) {
+                const stateOptgroup = document.createElement('optgroup');
+                stateOptgroup.label = `${country} - ${state}`;
+                console.log('Adding state:', state);
+                
                 // Iterate through cities
                 locations[country][state].forEach(city => {
                     const option = document.createElement('option');
                     option.value = `${country}|${state}|${city}`;
-                    option.textContent = `${city}, ${state}`;
-                    countryOptgroup.appendChild(option);
+                    option.textContent = city;
+                    stateOptgroup.appendChild(option);
+                    console.log('Added city:', city);
                 });
-            }
 
-            dropdown.appendChild(countryOptgroup);
+                dropdown.appendChild(stateOptgroup);
+            }
         }
+        
+        console.log('Dropdown population complete');
+        
+        // Trigger a change event to ensure proper initialization
+        const event = new Event('change');
+        dropdown.dispatchEvent(event);
     }
 
     const topicsList = document.querySelector('.topics-list');
