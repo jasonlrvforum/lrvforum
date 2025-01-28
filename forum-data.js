@@ -1,5 +1,7 @@
-// Forum Categories Data
-var categories = [
+// Wrap all data in an IIFE to avoid global scope pollution
+(function() {
+    // Forum Categories Data
+    const categories = [
     {
         id: 1,
         name: "Resort Reviews",
@@ -43,7 +45,7 @@ var categories = [
 ];
 
 // Forum Topics Data
-var topics = [
+const topics = [
     {
         id: 1,
         categoryId: 4,
@@ -98,7 +100,7 @@ var topics = [
 ];
 
 // Forum Posts Data (Replies)
-var posts = [
+const posts = [
     {
         id: 1,
         topicId: 1,
@@ -128,7 +130,7 @@ var posts = [
 ];
 
 // Users Data
-var users = [
+const users = [
     {
         id: 1,
         username: "JohnDoe",
@@ -164,7 +166,7 @@ var users = [
 ];
 
 // Utility Functions
-var formatTimeAgo = function(date) {
+const formatTimeAgo = function(date) {
     const now = new Date();
     const diffInSeconds = Math.floor((now - date) / 1000);
     const diffInMinutes = Math.floor(diffInSeconds / 60);
@@ -183,7 +185,7 @@ var formatTimeAgo = function(date) {
     return 'just now';
 };
 
-var formatNumber = function(num) {
+const formatNumber = function(num) {
     if (num >= 1000) {
         return (num / 1000).toFixed(1) + 'k';
     }
@@ -191,7 +193,7 @@ var formatNumber = function(num) {
 };
 
 // Timeshare Locations Data
-var locations = {
+const locations = {
     "United States": {
         "Alabama": ["Gulf Shores"],
         "Arizona": ["Phoenix", "Sedona", "Scottsdale"],
@@ -224,15 +226,16 @@ var locations = {
     }
 };
 
-// Export data and utilities
-window.forumData = {
-    categories,
-    topics,
-    posts,
-    users,
-    locations,
-    utils: {
-        formatTimeAgo,
-        formatNumber
-    }
-};
+    // Export data and utilities
+    window.forumData = {
+        categories,
+        topics,
+        posts,
+        users,
+        locations,
+        utils: {
+            formatTimeAgo,
+            formatNumber
+        }
+    };
+})();
