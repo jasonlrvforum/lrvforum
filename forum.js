@@ -41,12 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const country in locations) {
             const countryOptgroup = document.createElement('optgroup');
             countryOptgroup.label = country;
+            dropdown.appendChild(countryOptgroup);
             console.log('Adding country:', country);
 
             // Iterate through states/regions
             for (const state in locations[country]) {
                 const stateOptgroup = document.createElement('optgroup');
                 stateOptgroup.label = `${country} - ${state}`;
+                countryOptgroup.appendChild(stateOptgroup);
                 console.log('Adding state:', state);
                 
                 // Iterate through cities
@@ -57,16 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     stateOptgroup.appendChild(option);
                     console.log('Added city:', city);
                 });
-
-                dropdown.appendChild(stateOptgroup);
             }
         }
         
         console.log('Dropdown population complete');
         
-        // Trigger a change event to ensure proper initialization
-        const event = new Event('change');
-        dropdown.dispatchEvent(event);
+        // Add change event listener for the dropdown
+        dropdown.addEventListener('change', () => {
+            const selectedValue = dropdown.value;
+            console.log('Location selected:', selectedValue);
+            if (selectedValue) {
+                performSearch();
+            }
+        });
     }
 
     const topicsList = document.querySelector('.topics-list');
