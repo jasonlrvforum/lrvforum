@@ -21,12 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (locationDropdown) {
         console.log('Found location dropdown, populating...');
         populateLocationDropdown(locationDropdown);
-        
-        // Add change event listener
-        locationDropdown.addEventListener('change', () => {
-            console.log('Location selected:', locationDropdown.value);
-            performSearch();
-        });
     } else {
         console.error('Location dropdown element not found');
     }
@@ -34,44 +28,62 @@ document.addEventListener('DOMContentLoaded', () => {
     function populateLocationDropdown(dropdown) {
         console.log('Populating dropdown with locations:', locations);
         
-        // Add the default option
-        dropdown.innerHTML = '<option value="">Find your perfect timeshare</option>';
+        const optionsContainer = document.getElementById('locationOptions');
+        let selectedValue = '';
+
+        // Clear existing options
+        optionsContainer.innerHTML = '';
 
         // Iterate through countries
         for (const country in locations) {
-            const countryOptgroup = document.createElement('optgroup');
-            countryOptgroup.label = country;
-            dropdown.appendChild(countryOptgroup);
-            console.log('Adding country:', country);
+            // Add country header
+            const countryHeader = document.createElement('div');
+            countryHeader.className = 'dropdown-group';
+            countryHeader.textContent = country;
+            optionsContainer.appendChild(countryHeader);
 
             // Iterate through states/regions
             for (const state in locations[country]) {
-                const stateOptgroup = document.createElement('optgroup');
-                stateOptgroup.label = `${country} - ${state}`;
-                countryOptgroup.appendChild(stateOptgroup);
-                console.log('Adding state:', state);
+                // Add state header
+                const stateHeader = document.createElement('div');
+                stateHeader.className = 'dropdown-group';
+                stateHeader.style.paddingLeft = '24px';
+                stateHeader.textContent = state;
+                optionsContainer.appendChild(stateHeader);
                 
-                // Iterate through cities
+                // Add cities
                 locations[country][state].forEach(city => {
-                    const option = document.createElement('option');
-                    option.value = `${country}|${state}|${city}`;
+                    const option = document.createElement('div');
+                    option.className = 'dropdown-option';
+                    option.style.paddingLeft = '32px';
                     option.textContent = city;
-                    stateOptgroup.appendChild(option);
-                    console.log('Added city:', city);
+                    option.dataset.value = `${country}|${state}|${city}`;
+                    
+                    option.addEventListener('click', () => {
+                        selectedValue = option.dataset.value;
+                        dropdown.textContent = city;
+                        dropdown.dataset.value = selectedValue;
+                        optionsContainer.classList.remove('show');
+                        performSearch();
+                    });
+                    
+                    optionsContainer.appendChild(option);
                 });
             }
         }
         
-        console.log('Dropdown population complete');
-        
-        // Add change event listener for the dropdown
-        dropdown.addEventListener('change', () => {
-            const selectedValue = dropdown.value;
-            console.log('Location selected:', selectedValue);
-            if (selectedValue) {
-                performSearch();
-            }
+        // Toggle dropdown on click
+        dropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            optionsContainer.classList.toggle('show');
         });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            optionsContainer.classList.remove('show');
+        });
+
+        console.log('Dropdown population complete');
     }
 
     const topicsList = document.querySelector('.topics-list');
@@ -169,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         searchButton.addEventListener('click', () => {
             console.log('Search button clicked');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedLocation = locationDropdown.dataset.value || '';
+            console.log('Performing search with:', { searchTerm, selectedLocation });
             performSearch();
         });
 
@@ -189,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const searchTerm = searchInput.value.toLowerCase().trim();
-        const selectedLocation = locationDropdown ? locationDropdown.value : '';
+        const selectedLocation = locationDropdown ? locationDropdown.dataset.value : '';
         
         console.log('Search term:', searchTerm, 'Location:', selectedLocation);
         if (!searchTerm && !selectedLocation) {
@@ -203,11 +218,27 @@ document.addEventListener('DOMContentLoaded', () => {
             // Location filtering
             if (selectedLocation) {
                 const [country, state, city] = selectedLocation.split('|');
-                const locationMatch = topic.tags.some(tag => 
-                    tag.toLowerCase() === city.toLowerCase() ||
-                    tag.toLowerCase() === state.toLowerCase() ||
-                    tag.toLowerCase() === country.toLowerCase()
-                );
+                console.log('Checking location match:', { country, state, city });
+                console.log('Topic tags:', topic.tags);
+                
+                const locationMatch = topic.tags.some(tag => {
+                    const tagLower = tag.toLowerCase();
+                    const cityLower = city.toLowerCase();
+                    const stateLower = state.toLowerCase();
+                    const countryLower = country.toLowerCase();
+                    
+                    const matches = {
+                        cityMatch: cityLower.includes(tagLower) || tagLower.includes(cityLower),
+                        stateMatch: stateLower.includes(tagLower) || tagLower.includes(stateLower),
+                        countryMatch: countryLower.includes(tagLower) || tagLower.includes(countryLower)
+                    };
+                    
+                    console.log('Tag matches:', { tag, ...matches });
+                    
+                    return matches.cityMatch || matches.stateMatch || matches.countryMatch;
+                });
+                
+                console.log('Location match result:', locationMatch);
                 if (!locationMatch) return false;
             }
 

@@ -61,12 +61,12 @@ const topics = [
         replyCount: 45,
         status: "hot",
         content: "A comprehensive analysis of the current timeshare market trends...",
-        tags: ["market-analysis", "buying", "trends"]
+        tags: ["market-analysis", "buying", "trends", "United States"]
     },
     {
         id: 2,
         categoryId: 1,
-        title: "Luxury Beach Resort Review",
+        title: "Luxury Beach Resort Review: Cabo San Lucas",
         author: {
             id: 2,
             username: "TravelPro",
@@ -78,7 +78,7 @@ const topics = [
         replyCount: 32,
         status: "featured",
         content: "Experience pure luxury at this stunning beachfront resort. The property features pristine white sand beaches, crystal clear waters, and world-class amenities...",
-        tags: ["resort-review", "luxury", "beach"]
+        tags: ["resort-review", "luxury", "beach", "Cabo San Lucas", "Baja California Sur", "Mexico"]
     },
     {
         id: 3,
@@ -95,7 +95,58 @@ const topics = [
         replyCount: 32,
         status: "featured",
         content: "Detailed review of the Maui resort's recovery and current state...",
-        tags: ["resort-review", "maui", "hawaii"]
+        tags: ["resort-review", "Lahaina (Maui)", "Hawaii", "United States"]
+    },
+    {
+        id: 4,
+        categoryId: 1,
+        title: "Orlando Theme Park Resort Experience",
+        author: {
+            id: 3,
+            username: "ResortExpert",
+            reputation: 2100
+        },
+        createdAt: new Date("2025-01-27T10:00:00"),
+        lastReplyAt: new Date("2025-01-27T13:00:00"),
+        viewCount: 750,
+        replyCount: 28,
+        status: "featured",
+        content: "A complete guide to our stay at the theme park resort in Orlando...",
+        tags: ["resort-review", "theme-park", "Orlando", "Florida", "United States"]
+    },
+    {
+        id: 5,
+        categoryId: 1,
+        title: "Desert Oasis: Phoenix Resort Review",
+        author: {
+            id: 3,
+            username: "ResortExpert",
+            reputation: 2100
+        },
+        createdAt: new Date("2025-01-26T10:00:00"),
+        lastReplyAt: new Date("2025-01-27T09:00:00"),
+        viewCount: 450,
+        replyCount: 15,
+        status: "featured",
+        content: "Experience luxury in the heart of the Sonoran Desert. Our stay at this Phoenix resort exceeded all expectations...",
+        tags: ["resort-review", "Phoenix", "Arizona", "United States", "desert"]
+    },
+    {
+        id: 6,
+        categoryId: 1,
+        title: "Las Vegas Strip Resort Experience",
+        author: {
+            id: 2,
+            username: "TravelPro",
+            reputation: 3400
+        },
+        createdAt: new Date("2025-01-25T15:00:00"),
+        lastReplyAt: new Date("2025-01-26T12:00:00"),
+        viewCount: 680,
+        replyCount: 25,
+        status: "featured",
+        content: "Prime location on the Las Vegas Strip with amazing amenities and entertainment options...",
+        tags: ["resort-review", "Las Vegas", "Nevada", "United States", "entertainment"]
     }
 ];
 
