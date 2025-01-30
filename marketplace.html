@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeshare Marketplace - LRV Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="marketplace-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="marketplace-container">
+        <header>
+            <h1><i class="fas fa-store"></i> Timeshare Marketplace</h1>
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search listings...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-group">
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="rental">Rentals</option>
+                        <option value="points">Points</option>
+                        <option value="deed">Deeds</option>
+                    </select>
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                    </select>
+                    <select id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="sold">Sold</option>
+                    </select>
+                    <select id="sortBy">
+                        <option value="newest">Newest First</option>
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="listing-grid" id="listingGrid">
+            <!-- Listings will be populated here -->
+        </div>
+
+        <!-- Listing Details Modal -->
+        <div id="listingModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeListingModal()">&times;</span>
+                <div id="listingDetails">
+                    <!-- Listing details will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Link (only visible to admins) -->
+        <div class="admin-link">
+            <a href="marketplace-admin.html" class="admin-button">
+                <i class="fas fa-cog"></i> Marketplace Administration
+            </a>
+        </div>
+    </div>
+
+    <script src="forum-data.js"></script>
+    <script src="marketplace-data.js"></script>
+    <script src="marketplace.js"></script>
+</body>
+</html>

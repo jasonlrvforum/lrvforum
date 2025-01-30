@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Admin - LRV Forum</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="marketplace-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="marketplace-container">
+        <div class="admin-controls">
+            <h2><i class="fas fa-cog"></i> Marketplace Administration</h2>
+            <div class="admin-grid">
+                <button class="admin-button create" onclick="openCreateForm()">
+                    <i class="fas fa-plus"></i> Create New Listing
+                </button>
+                <button class="admin-button edit" onclick="openBulkEdit()">
+                    <i class="fas fa-edit"></i> Bulk Edit
+                </button>
+                <button class="admin-button" onclick="exportListings()">
+                    <i class="fas fa-download"></i> Export Listings
+                </button>
+            </div>
+        </div>
+
+        <!-- Listing Form Dialog -->
+        <div id="listingFormDialog" class="modal" style="display: none;">
+            <div class="listing-form modal-content">
+                <div class="modal-header">
+                    <h3 id="formTitle">Create New Listing</h3>
+                    <button type="button" class="close-button" onclick="closeListingForm()">&times;</button>
+                </div>
+                <form id="listingForm" onsubmit="handleListingSubmit(event)">
+                    <div class="modal-scroll">
+                    <div class="form-group">
+                        <label class="form-label">Listing Type</label>
+                        <select class="form-input" id="listingType" onchange="updateFormFields()">
+                            <option value="rental">Rental Week</option>
+                            <option value="points">Points Package</option>
+                            <option value="deed">Deed Ownership</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-input" id="listingTitle" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-input" id="listingDescription" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Price (USD)</label>
+                        <input type="number" class="form-input" id="listingPrice" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <select class="form-input" id="listingLocation" required></select>
+                    </div>
+
+                    <!-- Rental-specific fields -->
+                    <div id="rentalFields" class="type-specific-fields">
+                        <div class="form-group">
+                            <label class="form-label">Check-in Date</label>
+                            <input type="date" class="form-input" id="checkInDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Check-out Date</label>
+                            <input type="date" class="form-input" id="checkOutDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Unit Type</label>
+                            <input type="text" class="form-input" id="unitType">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Max Occupancy</label>
+                            <input type="number" class="form-input" id="maxOccupancy">
+                        </div>
+                    </div>
+
+                    <!-- Points-specific fields -->
+                    <div id="pointsFields" class="type-specific-fields" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Club</label>
+                            <select class="form-input" id="pointsClub"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Points Amount</label>
+                            <input type="number" class="form-input" id="pointsAmount">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Use Year</label>
+                            <input type="number" class="form-input" id="useYear">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Maintenance Fees (USD/year)</label>
+                            <input type="number" class="form-input" id="maintenanceFees">
+                        </div>
+                    </div>
+
+                    <!-- Deed-specific fields -->
+                    <div id="deedFields" class="type-specific-fields" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Season</label>
+                            <select class="form-input" id="season">
+                                <option value="Platinum">Platinum</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Bronze">Bronze</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Week Number</label>
+                            <input type="number" class="form-input" id="weekNumber" min="1" max="52">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Unit Type</label>
+                            <input type="text" class="form-input" id="deedUnitType">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Maintenance Fees (USD/year)</label>
+                            <input type="number" class="form-input" id="deedMaintenanceFees">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ownership Type</label>
+                            <select class="form-input" id="ownershipType">
+                                <option value="annual">Annual</option>
+                                <option value="biennial">Biennial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div class="form-group">
+                        <label class="form-label">Amenities</label>
+                        <div class="amenities-grid" id="amenitiesGrid"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Images</label>
+                        <input type="file" class="form-input" id="listingImages" multiple accept="image/*">
+                    </div>
+
+                    </div>
+                    <footer class="modal-footer">
+                        <button type="submit" class="admin-button create">Save Listing</button>
+                        <button type="button" class="admin-button" onclick="closeListingForm()">Cancel</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+
+        <!-- Listings Table -->
+        <div class="listings-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="listingsTableBody">
+                    <!-- Listings will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="forum-data.js"></script>
+    <script src="marketplace-data.js"></script>
+    <script src="marketplace-admin.js"></script>
+</body>
+</html>
