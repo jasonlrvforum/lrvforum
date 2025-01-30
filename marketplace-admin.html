@@ -60,7 +60,16 @@
 
                     <div class="form-group">
                         <label class="form-label">Location</label>
-                        <select class="form-input" id="listingLocation" required></select>
+                        <div class="location-input-group">
+                            <select class="form-input" id="listingLocation" required></select>
+                            <div class="custom-location-toggle">
+                                <label class="custom-location-label">
+                                    <input type="checkbox" id="useCustomLocation" onchange="toggleCustomLocation()">
+                                    <span>Location not in list?</span>
+                                </label>
+                            </div>
+                            <input type="text" class="form-input" id="customLocation" style="display: none;" placeholder="Enter custom location (e.g. Resort Name, City, Country)">
+                        </div>
                     </div>
 
                     <!-- Rental-specific fields -->

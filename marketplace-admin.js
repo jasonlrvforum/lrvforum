@@ -180,6 +180,27 @@ function closeListingForm() {
     document.getElementById('listingFormDialog').style.display = 'none';
 }
 
+// Toggle between dropdown and custom location input
+function toggleCustomLocation() {
+    const useCustom = document.getElementById('useCustomLocation').checked;
+    const locationDropdown = document.getElementById('listingLocation');
+    const customLocationInput = document.getElementById('customLocation');
+    
+    if (useCustom) {
+        locationDropdown.style.display = 'none';
+        customLocationInput.classList.add('visible');
+        locationDropdown.required = false;
+        customLocationInput.required = true;
+        locationDropdown.value = '';
+    } else {
+        locationDropdown.style.display = 'block';
+        customLocationInput.classList.remove('visible');
+        locationDropdown.required = true;
+        customLocationInput.required = false;
+        customLocationInput.value = '';
+    }
+}
+
 // Handle listing form submission
 function handleListingSubmit(event) {
     event.preventDefault();
@@ -189,7 +210,9 @@ function handleListingSubmit(event) {
         title: document.getElementById('listingTitle').value,
         description: document.getElementById('listingDescription').value,
         price: parseFloat(document.getElementById('listingPrice').value),
-        location: document.getElementById('listingLocation').value,
+        location: document.getElementById('useCustomLocation').checked ? 
+            document.getElementById('customLocation').value :
+            document.getElementById('listingLocation').value,
         status: 'active',
         createdAt: new Date(),
         updatedAt: new Date(),

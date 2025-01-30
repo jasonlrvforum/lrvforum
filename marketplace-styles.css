@@ -252,7 +252,7 @@
 .modal-content {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 40px);
+    height: 90vh;
     margin: 20px;
     width: 100%;
     max-width: 800px;
@@ -262,11 +262,45 @@
 }
 
 .modal-scroll {
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    margin-top: 4px;
+}
+
+.location-input-group {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+.custom-location-toggle {
+    margin: 12px 0;
+}
+
+.custom-location-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #4299e1;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 4px 8px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #4299e1;
+}
+
+.custom-location-label:hover {
+    background: #ebf8ff;
 }
 
 #listingFormDialog .form-group {
@@ -323,10 +357,62 @@
 
 .form-input {
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #e2e8f0;
+    padding: 8px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 14px;
+}
+
+.location-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.custom-location-toggle {
+    margin: 8px 0;
+}
+
+.custom-location-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4299e1;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.custom-location-label input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.custom-location-label span {
+    user-select: none;
+}
+
+#customLocation {
+    margin-top: 4px;
+    display: none;
+    border: 1px solid #4299e1;
+}
+
+#customLocation.visible {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-input:focus {
